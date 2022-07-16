@@ -1,5 +1,5 @@
 {
-  "path-to-executable": "",
+  "path-to-executable": "C:\\parent\\path\\of\\executable",
   "executable": "Bot.exe",
   "exit-codes": {
     "restart": 100,
@@ -7,7 +7,6 @@
     "unzip-and-restart": 101,
     "restart-unknown": true
   },
-  "restart-delay": 1,
   "archive-to-extract": "Latest.zip",
   "debug": false
 }
