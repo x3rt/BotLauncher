@@ -4,7 +4,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Bot_Launcher.Services.Common;
 using Newtonsoft.Json;
-using Serilog;
 
 namespace Bot_Launcher.Services
 {
@@ -19,7 +18,7 @@ namespace Bot_Launcher.Services
             var fi = new FileInfo(path);
             if (!fi.Exists)
             {
-                Log.Warning("Loading configuration failed!");
+                Console.WriteLine("Loading configuration failed!");
 
                 Directory.CreateDirectory("Resources");
 
@@ -31,9 +30,9 @@ namespace Bot_Launcher.Services
                     await sw.FlushAsync();
                 }
 
-                Log.Warning("New default configuration file has been created at:");
-                Log.Warning("{Path}", fi.FullName);
-                Log.Warning("Please fill it with appropriate values and re-run the Launcher");
+                Console.WriteLine("New default configuration file has been created at:");
+                Console.WriteLine("" + fi.FullName);
+                Console.WriteLine("Please fill it with appropriate values and re-run the Launcher.");
 
                 throw new IOException("Configuration file not found!");
             }
