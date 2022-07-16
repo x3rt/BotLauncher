@@ -20,9 +20,15 @@ namespace Bot_Launcher
                 cfg = await LoadBotConfigAsync();
                 Log.Logger = LogExt.CreateLogger(cfg.CurrentConfiguration);
             }
+            catch (IOException ex)
+            {
+                Console.ReadKey(true);
+                Environment.Exit(99);
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("[Launcher] Error loading config: " + ex.Message);
+                Console.WriteLine("Error: " + ex.Message);
+                Console.ReadKey(true);
                 Environment.Exit(99);
             }
 
@@ -58,9 +64,18 @@ namespace Bot_Launcher
                     break;
                 }
             }
-            catch (Exception ex)
+            catch (System.ComponentModel.Win32Exception ex)
             {
                 Log.Error("Error: {Error}", ex.Message);
+                Log.Error("This is probably due to errors in the config.json");
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Error: {Error} {StackTrace}", ex.Message, ex.StackTrace);
+            }
+            finally
+            {
+                Console.ReadKey(true);
             }
         }
 
@@ -75,7 +90,7 @@ namespace Bot_Launcher
 
         private static async Task<ConfigService> LoadBotConfigAsync()
         {
-            Log.Information("Loading configuration... ");
+            Console.WriteLine("Loading configuration... ");
 
             var cfg = new ConfigService();
             await cfg.LoadConfigAsync();
