@@ -12,7 +12,7 @@ The config.json file will be created after you first run the application
 |:---------------------|:--------------------------------------|:------------------------------------------------------------------------------|
 | `path-to-executable` | `string`                              | Path to the folder containing the executable                                  |
 | `executable`         | `string`                              | Name of the executable                                                        |
-| `exit-codes`         | [`ExitCodesConfig`](#ExitCodesConfig) | Configuration for what exit codes do what. [See more](#ExitCodesConfig)       | 
+| `exit-codes`         | [`ExitCodesConfig`](#exitcodesconfig) | Configuration for what exit codes do what. [See more](#exitcodesconfig)       | 
 | `archive-to-extract` | `string`                              | Name of the zip file that will be extracted when the update exitcode is given |
 | `debug`              | `bool`                                | Whether Debug logs should be displayed                                        |
 
