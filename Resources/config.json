@@ -1,0 +1,13 @@
+{
+  "path-to-executable": "",
+  "executable": "Bot.exe",
+  "exit-codes": {
+    "restart": 100,
+    "shutdown": 99,
+    "unzip-and-restart": 101,
+    "restart-unknown": true
+  },
+  "restart-delay": 1,
+  "archive-to-extract": "Latest.zip",
+  "debug": false
+}
