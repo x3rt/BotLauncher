@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.IO;
 using System.Threading.Tasks;
-using Pastel;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
