@@ -12,6 +12,7 @@ namespace Bot_Launcher
     class Program
     {
         public static ConfigService cfg = null;
+
         static async Task Main(string[] args)
         {
             try
@@ -26,7 +27,8 @@ namespace Bot_Launcher
             }
 
             Process process = new System.Diagnostics.Process();
-            process.StartInfo.FileName = Path.Combine(cfg.CurrentConfiguration.PathToExecutable, cfg.CurrentConfiguration.Executable);
+            process.StartInfo.FileName = Path.Combine(cfg.CurrentConfiguration.PathToExecutable,
+                cfg.CurrentConfiguration.Executable);
             process.StartInfo.WorkingDirectory = cfg.CurrentConfiguration.PathToExecutable;
             process.StartInfo.CreateNoWindow = false;
             process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
@@ -41,13 +43,13 @@ namespace Bot_Launcher
                     if (code == cfg.CurrentConfiguration.ExitCodes.UnzipAndRestart)
                     {
                         Log.Information("Unzipping and restarting...");
-                        //unzip folder
-                        using ZipFile zip = new ZipFile(Path.Combine(cfg.CurrentConfiguration.PathToExecutable, cfg.CurrentConfiguration.ArchiveToExtract));
-                        zip.ExtractAll(cfg.CurrentConfiguration.PathToExecutable, ExtractExistingFileAction.OverwriteSilently);
-
-                        //restart
+                        using ZipFile zip = new ZipFile(Path.Combine(cfg.CurrentConfiguration.PathToExecutable,
+                            cfg.CurrentConfiguration.ArchiveToExtract));
+                        zip.ExtractAll(cfg.CurrentConfiguration.PathToExecutable,
+                            ExtractExistingFileAction.OverwriteSilently);
                         continue;
                     }
+
                     if (code == cfg.CurrentConfiguration.ExitCodes.Restart ||
                         cfg.CurrentConfiguration.ExitCodes.RestartUnknown)
                         continue;
